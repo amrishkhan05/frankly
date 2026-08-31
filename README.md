@@ -106,7 +106,20 @@ Cursor's [current MCP documentation](https://docs.cursor.com/context/model-conte
 
 ### GitHub Copilot
 
-Frankly is a native Copilot plugin with `/frankly`, `/frankly-plan`, `/frankly-review`, and `/frankly-verify` commands. Install this checkout as a Copilot plugin, build it once, then reopen VS Code. The included `.vscode/mcp.json` starts Frankly's local MCP server for this workspace.
+Frankly includes a native Copilot plugin with `/frankly`, `/frankly-plan`, `/frankly-review`, and `/frankly-verify` commands. Its manifest is at `.github/plugin/plugin.json`, with a marketplace descriptor at `.github/plugin/marketplace.json`.
+
+For local development, build this checkout and install the repository directory with VS Code's Copilot plugin flow. The plugin registers a session-start instruction, its Frankly skill, and the slash commands. Reopen VS Code after installing or updating the plugin.
+
+```bash
+npm install
+npm run build
+```
+
+This repository also includes `.vscode/mcp.json`. Copilot starts the local MCP server from `dist/integrations/mcp/index.js`, so the plugin can call `plan_change`, `analyze_change`, `minimize_change`, and `verify_change` against the current workspace.
+
+Use `/frankly-plan` before a change when scope is unclear. Use `/frankly-review` when implementation is complete, then `/frankly-verify` after the single permitted correction pass and any relevant tests.
+
+Copilot's verified local plugin hook surface provides session-start and prompt lifecycle hooks, not a task-completion hook. Frankly therefore does not yet trigger a final review automatically in Copilot; use the slash command or have Copilot follow its session instruction. Claude Code's plugin retains its automatic Stop-hook checkpoint.
 
 If you configure a different workspace manually, add `.vscode/mcp.json`:
 
@@ -234,4 +247,9 @@ One engine, thin adapters, no daemon, no database, no hidden model.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Frankly is MIT licensed.
 
-Created by Amrishkhan Sheik Abdullah ([@amrishkhan05](https://github.com/amrishkhan05), [amrishkhan.dev](https://amrishkhan.dev)).
+## Author
+
+Frankly is created by Amrishkhan Sheik Abdullah.
+
+- GitHub: [@amrishkhan05](https://github.com/amrishkhan05)
+- Website: [amrishkhan.dev](https://amrishkhan.dev)
