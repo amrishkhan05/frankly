@@ -1,11 +1,11 @@
-# <img src="file:///Users/AmrishMacBookPro/.gemini/antigravity-ide/brain/5dabddf1-502f-43d8-b12a-719035d77b27/frankly_hero_1788199973531.jpg" alt="Frankly Banner" width="800"/>
+# <img src="file:///Users/AmrishMacBookPro/.gemini/antigravity-ide/brain/5dabddf1-502f-43d8-b12a-719035d77b27/frankly_banner_1788200125901.jpg" alt="Frankly Banner" width="800"/>
 
 # Frankly
 
 <details open>
 <summary><strong>🚀 Tagline</strong></summary>
 
-> **Your AI writes code. Frankly asks why.**
+> **Your AI writes code. Frankly reviews it, frankly.**
 
 </details>
 
