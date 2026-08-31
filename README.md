@@ -1,49 +1,81 @@
+# <img src="file:///Users/AmrishMacBookPro/.gemini/antigravity-ide/brain/5dabddf1-502f-43d8-b12a-719035d77b27/frankly_hero_1788199973531.jpg" alt="Frankly Banner" width="800"/>
+
 # Frankly
 
-> Your AI writes code. Frankly asks why.
+<details open>
+<summary><strong>🚀 Tagline</strong></summary>
 
-Frankly is local-first change intelligence for coding agents. It reads the current Git diff and TypeScript/JavaScript project, then asks whether every changed file and symbol earned its place.
+> **Your AI writes code. Frankly asks why.**
 
-It is not another coding agent, a cloud review service, or a hidden LLM call. The core is deterministic and stays on your machine.
+</details>
 
-## The ten-second version
+---
+
+<div align="center">
+
+[![GitHub stars](https://img.shields.io/github/stars/amrishkhan05/frankly?style=for-the-badge)](https://github.com/amrishkhan05/frankly/stargazers)
+[![License](https://img.shields.io/github/license/amrishkhan05/frankly?style=for-the-badge)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/frankly?style=for-the-badge)](https://www.npmjs.com/package/frankly)
+
+</div>
+
+---
+
+## 🎯 What is Frankly?
+
+Frankly is a **local‑first change‑intelligence engine** for coding agents. It inspects the current Git diff and your TypeScript/JavaScript project, then asks whether **every changed file and symbol earned its place**. No hidden LLM calls, no cloud dependencies – everything runs deterministically on your machine.
+
+---
+
+## 📖 Table of Contents
+
+- [🚀 Quick Start](#-quick-start)
+- [🔎 The Ten‑Second Demo](#-the-ten-second-demo)
+- [✨ Features](#-features)
+- [⚙️ Installation & Usage](#-installation--usage)
+- [🧩 Plugins & MCP Integration](#-plugins--mcp-integration)
+- [🛠️ CLI Reference](#-cli-reference)
+- [🔧 Configuration](#-configuration)
+- [📊 Benchmarks & Scoring](#-benchmarks--scoring)
+- [🔐 Privacy & Security](#-privacy--security)
+- [🚧 Roadmap](#-roadmap)
+- [🤝 Contributing](#-contributing)
+- [👤 Author](#-author)
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repo
+git clone https://github.com/amrishkhan05/frankly.git
+cd frankly
+
+# Install dependencies (Node.js 20+ required)
+npm install
+
+# Run the test suite
+npm test
+
+# Build the project
+npm run build
+```
+
+> **Note:** The package is not yet published on npm. Until then, install directly from the source.
+
+---
+
+## 🔎 The Ten‑Second Demo
 
 ```text
 Task: Retry HTTP 429 responses
 
 FRANKLY · RED INK REVIEW
-CHANGE VERDICT  SIMPLIFY
-
-RED MARKS
-⚠ Existing retry implementation appears reusable
-⚠ New interface has no evidence of another consumer
-⚠ Behavioral change has no related regression test
+{{ ... }}
 
 CORRECTION PASS (1/1)
 Preserve behavior and safety; remove or justify the red marks, then verify once.
 ```
-
-Frankly reports evidence. Your coding agent decides how to correct the patch.
-
-## What works in v0.1
-
-- staged, unstaged, and untracked working-tree changes
-- changed TypeScript/JavaScript symbols and exported contracts
-- task alignment, scope drift, generated-file separation, and dependency additions
-- direct and transitive module callers, package impact, and change surface
-- reuse candidates and suspicious one-use abstractions
-- related-test prediction kept separate from recorded test execution
-- behavioral categories and missing-regression warnings
-- one bounded correction pass
-- terminal, Markdown, versioned JSON, and CI JSON reports
-- four MCP tools: `plan_change`, `analyze_change`, `minimize_change`, `verify_change`
-- automatic Claude Code checkpoint plugin
-
-Analysis degrades to diff evidence when a source file cannot be parsed. Frankly says so instead of inventing semantic results.
-
-## Install and run from source
-
-Node.js 20 or newer is required.
 
 ```bash
 git clone https://github.com/amrishkhan05/frankly.git
