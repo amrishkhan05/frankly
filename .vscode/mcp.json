@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "frankly": {
+      "command": "node",
+      "args": ["${workspaceFolder}/dist/integrations/mcp/index.js"]
+    }
+  }
+}

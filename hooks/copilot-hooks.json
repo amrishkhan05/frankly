@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": "node \"${PLUGIN_ROOT}/hooks/copilot-activate.js\"",
+        "powershell": "node \"${PLUGIN_ROOT}\\hooks\\copilot-activate.js\"",
+        "timeoutSec": 5
+      }
+    ]
+  }
+}

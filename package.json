@@ -31,9 +31,31 @@
     "@types/node": "^26.4.0",
     "vitest": "^4.1.11"
   },
-  "files": ["dist", "src", "scripts", ".claude-plugin", ".mcp.json", "hooks", "skills", "README.md", "LICENSE"],
-  "keywords": ["ai", "code-review", "mcp", "claude-code", "change-intelligence"],
-  "repository": { "type": "git", "url": "https://github.com/amrishkhan05/frankly.git" },
+  "files": [
+    "dist",
+    "src",
+    "scripts",
+    ".claude-plugin",
+    ".github",
+    ".mcp.json",
+    "hooks",
+    "skills",
+    "commands",
+    "fixtures",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "ai",
+    "code-review",
+    "mcp",
+    "claude-code",
+    "change-intelligence"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amrishkhan05/frankly.git"
+  },
   "homepage": "https://github.com/amrishkhan05/frankly#readme",
   "bugs": "https://github.com/amrishkhan05/frankly/issues",
   "license": "MIT"

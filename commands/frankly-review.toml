@@ -1,0 +1,2 @@
+description = "Run Frankly's Red Ink Review on the current change"
+prompt = "Use Frankly analyze_change for this task: {{args}}. Report the verdict and evidence-backed findings. Do not modify files unless the user asks for correction."

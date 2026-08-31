@@ -1,0 +1,2 @@
+description = "Use Frankly throughout a change: plan, analyze, one correction, and verify"
+prompt = "Use Frankly for this task: {{args}}. Call plan_change before editing if scope is uncertain. At completion, call analyze_change. If it recommends correction, use minimize_change once, preserve behavior and safety, then call verify_change with only tests that were actually run."

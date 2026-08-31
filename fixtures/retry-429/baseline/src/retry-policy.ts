@@ -1,0 +1,1 @@
+export const shouldRetry = (status: number) => status >= 500;

@@ -1,0 +1,2 @@
+description = "Verify the current change with Frankly"
+prompt = "Use Frankly verify_change for this task: {{args}}. Keep predicted tests distinct from tests actually executed."

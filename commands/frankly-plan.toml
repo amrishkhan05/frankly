@@ -1,0 +1,2 @@
+description = "Plan a change with Frankly's local repository evidence"
+prompt = "Use Frankly plan_change for this task: {{args}}. Report the likely files, reuse candidates, expected tests, and constraints before editing."

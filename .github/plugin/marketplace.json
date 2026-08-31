@@ -1,0 +1,20 @@
+{
+  "name": "frankly",
+  "description": "Local-first change intelligence for coding agents.",
+  "owner": {
+    "name": "Amrishkhan Sheik Abdullah",
+    "url": "https://github.com/amrishkhan05"
+  },
+  "plugins": [
+    {
+      "name": "frankly",
+      "description": "Challenge code changes with deterministic local repository evidence.",
+      "source": "./",
+      "category": "productivity",
+      "tags": ["code-review", "mcp", "local-first"],
+      "commands": "commands/",
+      "skills": "skills/",
+      "hooks": "hooks/copilot-hooks.json"
+    }
+  ]
+}

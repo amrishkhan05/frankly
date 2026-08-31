@@ -106,7 +106,9 @@ Cursor's [current MCP documentation](https://docs.cursor.com/context/model-conte
 
 ### GitHub Copilot
 
-For VS Code, add `.vscode/mcp.json`:
+Frankly is a native Copilot plugin with `/frankly`, `/frankly-plan`, `/frankly-review`, and `/frankly-verify` commands. Install this checkout as a Copilot plugin, build it once, then reopen VS Code. The included `.vscode/mcp.json` starts Frankly's local MCP server for this workspace.
+
+If you configure a different workspace manually, add `.vscode/mcp.json`:
 
 ```json
 {
@@ -195,6 +197,8 @@ npm run benchmark
 ```
 
 The harness records measured files, changed lines, symbols, findings, drift, verdict, and duration for cases in `benchmarks/tasks.example.json`. No improvement percentage is claimed until agent-alone and agent-plus-Frankly runs are reproducibly measured.
+
+`npm run demo` executes the deliberately broad retry-429 candidate in [fixtures/retry-429](fixtures/retry-429) and shows the evidence Frankly reports.
 
 ## Privacy and security
 
