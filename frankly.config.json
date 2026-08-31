@@ -1,0 +1,85 @@
+{
+  "trigger": "checkpoint",
+  "action": "correct",
+  "intensity": "full",
+  "personality": "senior",
+
+  "maxCorrectionPasses": 1,
+
+  "analysis": {
+    "minimumSufficientChange": true,
+    "taskAlignment": true,
+    "reuseFirst": true,
+    "scopeDrift": true,
+    "refactorContamination": true,
+    "unnecessaryAbstractions": true,
+    "unnecessaryDependencies": true,
+    "duplication": true,
+    "blastRadius": true,
+    "changeSurface": true,
+    "changeNecessity": true,
+    "reviewBurden": true,
+    "contractChanges": true,
+    "behavioralChanges": true,
+    "testImpact": true,
+    "missingRegressionTests": true
+  },
+
+  "restraint": {
+    "enabled": true,
+
+    "yagni": true,
+    "reuseExistingCodeFirst": true,
+    "stdlibFirst": true,
+    "platformNativeFirst": true,
+    "installedDependenciesFirst": true,
+    "avoidNewDependencies": true,
+    "avoidPrematureAbstraction": true,
+    "avoidUnnecessaryGeneralization": true,
+    "avoidUnrelatedRefactors": true,
+    "preferLocalChange": true,
+    "preferSmallestSafeDiff": true,
+    "preserveSafetyGuardrails": true
+  },
+
+  "tests": {
+    "predictAffected": true,
+    "distinguishPredictedAndExecuted": true,
+    "detectMissingRegressionCoverage": true,
+    "riskBasedExecution": true,
+
+    "adapters": {
+      "jest": true,
+      "vitest": true,
+      "nx": true
+    }
+  },
+
+  "correction": {
+    "enabled": true,
+    "preserveRequestedBehavior": true,
+    "preserveSecurity": true,
+    "preserveValidation": true,
+    "preserveAccessibility": true,
+    "preserveDataIntegrity": true,
+    "preserveErrorHandling": true,
+    "preserveRegressionCoverage": true
+  },
+
+  "report": {
+    "redInkReview": true,
+    "showEvidence": true,
+    "showConfidence": true,
+    "showLowConfidenceFindings": false,
+    "showPersonalityLine": true,
+    "progressiveDisclosure": true
+  },
+
+  "privacy": {
+    "localOnly": true,
+    "telemetry": false,
+    "externalLLMCalls": false,
+    "embeddings": false,
+    "remoteCodeUpload": false
+  }
+}

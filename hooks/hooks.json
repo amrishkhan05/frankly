@@ -1,0 +1,13 @@
+{
+  "description": "Run one local Red Ink Review when Claude finishes a task.",
+  "hooks": {
+    "Stop": [{
+      "hooks": [{
+        "type": "command",
+        "command": "node",
+        "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/run.cjs", "checkpoint", "${CLAUDE_PLUGIN_DATA}"],
+        "timeout": 60
+      }]
+    }]
+  }
+}

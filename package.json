@@ -1,0 +1,40 @@
+{
+  "name": "frankly",
+  "version": "0.1.0",
+  "description": "Change intelligence for AI coding agents. Every changed line should earn its place.",
+  "type": "module",
+  "bin": {
+    "frankly": "./dist/integrations/cli/index.js"
+  },
+  "scripts": {
+    "dev": "tsx src/integrations/cli/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "mcp": "tsx src/integrations/mcp/index.ts",
+    "review": "tsx src/integrations/cli/index.ts review",
+    "verify": "tsx src/integrations/cli/index.ts verify",
+    "demo": "tsx src/integrations/cli/demo.ts",
+    "benchmark": "tsx benchmarks/run.ts",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.0",
+    "vitest": "^4.1.11"
+  },
+  "files": ["dist", "src", "scripts", ".claude-plugin", ".mcp.json", "hooks", "skills", "README.md", "LICENSE"],
+  "keywords": ["ai", "code-review", "mcp", "claude-code", "change-intelligence"],
+  "repository": { "type": "git", "url": "https://github.com/amrishkhan05/frankly.git" },
+  "homepage": "https://github.com/amrishkhan05/frankly#readme",
+  "bugs": "https://github.com/amrishkhan05/frankly/issues",
+  "license": "MIT"
+}

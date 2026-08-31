@@ -1,0 +1,233 @@
+# Frankly
+
+> Your AI writes code. Frankly asks why.
+
+Frankly is local-first change intelligence for coding agents. It reads the current Git diff and TypeScript/JavaScript project, then asks whether every changed file and symbol earned its place.
+
+It is not another coding agent, a cloud review service, or a hidden LLM call. The core is deterministic and stays on your machine.
+
+## The ten-second version
+
+```text
+Task: Retry HTTP 429 responses
+
+FRANKLY · RED INK REVIEW
+CHANGE VERDICT  SIMPLIFY
+
+RED MARKS
+⚠ Existing retry implementation appears reusable
+⚠ New interface has no evidence of another consumer
+⚠ Behavioral change has no related regression test
+
+CORRECTION PASS (1/1)
+Preserve behavior and safety; remove or justify the red marks, then verify once.
+```
+
+Frankly reports evidence. Your coding agent decides how to correct the patch.
+
+## What works in v0.1
+
+- staged, unstaged, and untracked working-tree changes
+- changed TypeScript/JavaScript symbols and exported contracts
+- task alignment, scope drift, generated-file separation, and dependency additions
+- direct and transitive module callers, package impact, and change surface
+- reuse candidates and suspicious one-use abstractions
+- related-test prediction kept separate from recorded test execution
+- behavioral categories and missing-regression warnings
+- one bounded correction pass
+- terminal, Markdown, versioned JSON, and CI JSON reports
+- four MCP tools: `plan_change`, `analyze_change`, `minimize_change`, `verify_change`
+- automatic Claude Code checkpoint plugin
+
+Analysis degrades to diff evidence when a source file cannot be parsed. Frankly says so instead of inventing semantic results.
+
+## Install and run from source
+
+Node.js 20 or newer is required.
+
+```bash
+git clone https://github.com/amrishkhan05/frankly.git
+cd frankly
+npm install
+npm test
+npm run build
+```
+
+The repository has not claimed an npm release yet, so this README does not pretend `npm install -g frankly` is available.
+
+## Claude Code plugin
+
+For a local checkout:
+
+```bash
+claude --plugin-dir /absolute/path/to/frankly
+```
+
+The plugin bundles Frankly's MCP server and a `Stop` hook. At task completion it runs a Red Ink Review; when correction is warranted it returns exactly one constrained correction request. The second stop is allowed, preventing loops. Claude Code's current plugin layout and hook behavior are documented in the [official plugin reference](https://code.claude.com/docs/en/plugins-reference) and [hooks reference](https://code.claude.com/docs/en/hooks).
+
+The first plugin run installs the package's declared runtime dependencies into Claude's plugin data directory. Repository analysis remains local and makes no external requests.
+
+## Generic MCP
+
+After building, start the stdio server with:
+
+```bash
+node /absolute/path/to/frankly/dist/integrations/mcp/index.js
+```
+
+Use that command anywhere an MCP client accepts a local stdio server.
+
+### Codex
+
+```bash
+codex mcp add frankly -- node /absolute/path/to/frankly/dist/integrations/mcp/index.js
+```
+
+Codex stores MCP settings in `~/.codex/config.toml` or trusted project `.codex/config.toml`, and its CLI, IDE extension, and desktop app share the configuration. See the [official OpenAI MCP documentation](https://developers.openai.com/codex/mcp).
+
+Codex does not expose Claude's Stop-hook lifecycle. Use the four MCP tools at plan, review, correction, and verification checkpoints.
+
+### Cursor
+
+Create `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "frankly": {
+      "command": "node",
+      "args": ["/absolute/path/to/frankly/dist/integrations/mcp/index.js"]
+    }
+  }
+}
+```
+
+Cursor's [current MCP documentation](https://docs.cursor.com/context/model-context-protocol) confirms project configuration at `.cursor/mcp.json`. Automatic lifecycle hooks are not assumed; invoke Frankly's tools from Agent mode.
+
+### GitHub Copilot
+
+For VS Code, add `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "frankly": {
+      "command": "node",
+      "args": ["/absolute/path/to/frankly/dist/integrations/mcp/index.js"]
+    }
+  }
+}
+```
+
+See GitHub's [MCP setup documentation](https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp-in-your-ide/extend-copilot-chat-with-mcp). Availability can depend on IDE and organization policy.
+
+### Kilo Code
+
+Add to `.kilo/kilo.json`:
+
+```json
+{
+  "mcp": {
+    "frankly": {
+      "type": "local",
+      "command": ["node", "/absolute/path/to/frankly/dist/integrations/mcp/index.js"],
+      "enabled": true
+    }
+  }
+}
+```
+
+See Kilo's [current MCP documentation](https://kilo.ai/docs/automate/mcp/using-in-kilo-code).
+
+## CLI fallback
+
+```bash
+npm run review -- --task "Retry HTTP 429 responses"
+npm run review -- --task "Retry HTTP 429 responses" --run-tests
+npm run review -- --task "Retry HTTP 429 responses" --json
+npm run review -- --task "Retry HTTP 429 responses" --ci
+npm run verify -- --task "Retry HTTP 429 responses" --run-tests
+```
+
+CLI review is advisory by default. `--ci` exits non-zero for a non-clean verdict.
+
+## MCP workflow
+
+1. `plan_change` returns a soft file/symbol/test budget and reuse candidates.
+2. `analyze_change` returns the Red Ink Review.
+3. `minimize_change` returns at most one correction instruction.
+4. `verify_change` re-analyzes the final diff with actual test metadata when supplied.
+
+Predicted tests are `LIKELY_AFFECTED` or `POSSIBLY_AFFECTED`. Executed tests are only `PASSED`, `FAILED`, `SKIPPED`, or `NOT_RUN` when the caller supplies or the CLI records an actual run.
+
+## Configuration
+
+Frankly reads one repository format: `frankly.config.json`.
+
+```json
+{
+  "trigger": "checkpoint",
+  "action": "correct",
+  "intensity": "full",
+  "personality": "senior",
+  "maxCorrectionPasses": 1
+}
+```
+
+Invocation options override repository settings, which override defaults. Personality changes wording only; it does not change findings or severity.
+
+## Scoring
+
+Change Necessity is the percentage of classified changes with direct, supporting, test, or generated evidence, minus five points for each visible medium/high-confidence finding. Change Surface combines non-generated files, changed symbols, exported contracts, and cross-package impact. Scope Drift is the share of changed files classified as suspicious.
+
+These are explainable heuristics, not universal measures. Read the findings and evidence before the number.
+
+## Test impact and false positives
+
+Frankly predicts related tests from import edges, changed-symbol references, and naming proximity. It does not claim coverage or failure without an executed result. Low-confidence guesses are not promoted to hard conclusions.
+
+The v0.1 graph follows relative TypeScript/JavaScript imports. Package-alias resolution, runtime route graphs, coverage ingestion, and historical co-change weighting are future work; add them when fixtures demonstrate a credible improvement.
+
+## Benchmarks
+
+```bash
+npm run benchmark
+```
+
+The harness records measured files, changed lines, symbols, findings, drift, verdict, and duration for cases in `benchmarks/tasks.example.json`. No improvement percentage is claimed until agent-alone and agent-plus-Frankly runs are reproducibly measured.
+
+## Privacy and security
+
+- no account, telemetry, embeddings, vector database, code upload, or external AI API
+- Git commands use argument arrays rather than interpolated shell commands
+- optional `--run-tests` executes the repository's own test script
+- plugin bootstrap contacts npm only to install declared runtime dependencies
+
+See [SECURITY.md](SECURITY.md).
+
+## Architecture
+
+```text
+Git diff + task + TS/JS source
+              |
+       deterministic engine
+              |
+     evidence-backed review
+       /       |        \
+ Claude     generic MCP   CLI/CI
+```
+
+One engine, thin adapters, no daemon, no database, no hidden model.
+
+## Roadmap
+
+- validate package aliases and framework-specific runtime boundaries with fixtures
+- ingest Jest/Vitest/Nx related-test output instead of only the repository test script
+- add historical before/after benchmark cases
+- publish the npm package and Claude marketplace listing
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Frankly is MIT licensed.
+
+Created by Amrishkhan Sheik Abdullah ([@amrishkhan05](https://github.com/amrishkhan05), [amrishkhan.dev](https://amrishkhan.dev)).

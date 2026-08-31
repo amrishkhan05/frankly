@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "frankly",
+  "displayName": "Frankly",
+  "version": "0.1.0",
+  "description": "Local-first change intelligence for AI coding agents.",
+  "author": { "name": "Amrishkhan Sheik Abdullah", "url": "https://github.com/amrishkhan05" },
+  "repository": "https://github.com/amrishkhan05/frankly",
+  "license": "MIT",
+  "keywords": ["change-intelligence", "code-review", "local-first", "mcp"]
+}
