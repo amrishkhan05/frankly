@@ -62,7 +62,8 @@
   },
   "license": "MIT",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "author": "Amrish Khan <amrishkhan05@gmail.com>",
   "main": "index.js",
