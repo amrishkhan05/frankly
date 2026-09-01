@@ -1,0 +1,2 @@
+description = "Show Frankly's Copilot workflow and command reference"
+prompt = "Show the Frankly quick reference. Do not analyze or modify the current patch. Explain: /frankly <task> runs the full workflow; /frankly-plan <task> plans uncertain work; /frankly-review <task> analyzes the current diff without editing; /frankly-verify <task> checks the final diff; and minimize_change permits one evidence-backed correction pass only. State that predicted tests are not executed test results."

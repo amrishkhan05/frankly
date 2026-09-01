@@ -1,4 +1,4 @@
-# <img src="file:///Users/AmrishMacBookPro/.gemini/antigravity-ide/brain/5dabddf1-502f-43d8-b12a-719035d77b27/frankly_banner_1788200125901.jpg" alt="Frankly Banner" width="800"/>
+# <img src="file:///Users/AmrishMacBookPro/.gemini/antigravity-ide/brain/5dabddf1-502f-43d8-b12a-719035d77b27/frankly_banner_wide_1788237479013.jpg" alt="Frankly Banner" width="800"/>
 
 # Frankly
 
@@ -60,7 +60,7 @@ npm test
 # Build the project
 npm run build
 ```
-
+![Frankly demo](file:///Users/AmrishMacBookPro/.gemini/antigravity-ide/brain/5dabddf1-502f-43d8-b12a-719035d77b27/demo.gif)
 > **Note:** The package is not yet published on npm. Until then, install directly from the source.
 
 ---
@@ -138,7 +138,7 @@ Cursor's [current MCP documentation](https://docs.cursor.com/context/model-conte
 
 ### GitHub Copilot
 
-Frankly includes a native Copilot plugin with `/frankly`, `/frankly-plan`, `/frankly-review`, and `/frankly-verify` commands. Its manifest is at `.github/plugin/plugin.json`, with a marketplace descriptor at `.github/plugin/marketplace.json`.
+Frankly includes a native Copilot plugin with `/frankly`, `/frankly-plan`, `/frankly-review`, `/frankly-verify`, and `/frankly-help` commands. Its manifest is at `.github/plugin/plugin.json`, with a marketplace descriptor at `.github/plugin/marketplace.json`.
 
 For local development, build this checkout and install the repository directory with VS Code's Copilot plugin flow. The plugin registers a session-start instruction, its Frankly skill, and the slash commands. Reopen VS Code after installing or updating the plugin.
 
@@ -150,6 +150,37 @@ npm run build
 This repository also includes `.vscode/mcp.json`. Copilot starts the local MCP server from `dist/integrations/mcp/index.js`, so the plugin can call `plan_change`, `analyze_change`, `minimize_change`, and `verify_change` against the current workspace.
 
 Use `/frankly-plan` before a change when scope is unclear. Use `/frankly-review` when implementation is complete, then `/frankly-verify` after the single permitted correction pass and any relevant tests.
+
+#### Copilot command reference
+
+All commands accept a task description after the command. Give Frankly a concrete description of the requested behavior; a task such as `review` is too broad to produce useful intent evidence.
+
+| Command | Use | What Copilot does |
+| --- | --- | --- |
+| `/frankly <task>` | Run the complete change workflow. | Plans uncertain work, reviews the completed diff, permits one evidence-backed correction, and verifies the result. |
+| `/frankly-plan <task>` | Before editing when the expected scope is unclear. | Calls `plan_change` and reports likely touched areas, reusable code, expected scope, tests, and constraints. |
+| `/frankly-review <task>` | Review the current working-tree diff without changing it. | Calls `analyze_change` and reports the Red Ink verdict, findings, impact, contracts, and predicted tests. |
+| `/frankly-verify <task>` | Check the final diff after tests or a correction pass. | Calls `verify_change` and reports unresolved evidence-backed concerns. |
+| `/frankly-help` | View Frankly's workflow without reviewing or modifying the patch. | Explains the commands, the single-correction limit, and the difference between predicted and executed tests. |
+
+Typical Copilot session:
+
+```text
+/frankly-plan Retry HTTP 429 responses
+
+# Implement the requested change and run its relevant tests.
+
+/frankly-review Retry HTTP 429 responses
+
+# Only when the review has evidence-backed simplification findings:
+# make one correction pass, preserving behavior and safety.
+
+/frankly-verify Retry HTTP 429 responses
+```
+
+`/frankly-review` does not modify files. When it recommends a correction, Copilot calls `minimize_change` to obtain a constrained instruction. Frankly permits one correction pass only; it does not loop review and correction indefinitely.
+
+Frankly keeps predictions and results separate. Its related-test output identifies `LIKELY_AFFECTED` and `POSSIBLY_AFFECTED` tests. Tests are only reported as `PASSED`, `FAILED`, `SKIPPED`, or `NOT_RUN` when Copilot or the CLI supplies an actual execution result.
 
 Copilot's verified local plugin hook surface provides session-start and prompt lifecycle hooks, not a task-completion hook. Frankly therefore does not yet trigger a final review automatically in Copilot; use the slash command or have Copilot follow its session instruction. Claude Code's plugin retains its automatic Stop-hook checkpoint.
 
@@ -188,22 +219,73 @@ See Kilo's [current MCP documentation](https://kilo.ai/docs/automate/mcp/using-i
 
 ## CLI fallback
 
+The published `frankly` executable and the source checkout support the same subcommands. Run commands from the repository you want to analyze. The CLI reads its working-tree diff and its `frankly.config.json`.
+
 ```bash
+# From a source checkout
+npm run dev -- <command> [options]
+
+# After building, through the package executable
+frankly <command> [options]
+```
+
+### CLI command reference
+
+| Command | Description | Supported options |
+| --- | --- | --- |
+| `frankly help` | Prints the CLI command and option reference. Running `frankly` with no subcommand has the same result. | None. |
+| `frankly plan` | Produces a pre-change plan from the task text and local repository evidence. It estimates affected areas, reusable code, expected scope, and likely test needs. | `--task <text>` |
+| `frankly review` | Analyzes the current working-tree diff and prints a Red Ink Review. It does not modify the patch. | `--task <text>`, `--intensity <lite\|full\|ultra\|off>`, `--personality <conservative\|senior\|witty>`, `--run-tests`, `--json`, `--markdown`, `--ci` |
+| `frankly verify` | Re-analyzes the current working-tree diff as a final verification. It exits nonzero when the verdict is not `CLEAN`. | `--task <text>`, `--intensity <lite\|full\|ultra\|off>`, `--personality <conservative\|senior\|witty>`, `--run-tests` |
+| `frankly config` | Prints the active workspace path and Frankly's default configuration. `frankly config show` is equivalent. | `show` |
+| `frankly mcp` | Starts the stdio MCP server for an MCP-compatible client. It remains running until the client closes the connection. | None. |
+
+`--task` defaults to a generic task when omitted. Provide a concrete task description for meaningful intent matching. `--run-tests` runs the repository's `pnpm test`, `yarn test`, or `npm test` command and records that one real result. `--ci` emits CI JSON and exits nonzero unless the verdict is `CLEAN`. `--json` and `--markdown` apply to `review`; terminal output is the default.
+
+Examples:
+
+```bash
+npm run dev -- plan --task "Retry HTTP 429 responses"
 npm run review -- --task "Retry HTTP 429 responses"
 npm run review -- --task "Retry HTTP 429 responses" --run-tests
 npm run review -- --task "Retry HTTP 429 responses" --json
+npm run review -- --task "Retry HTTP 429 responses" --markdown
 npm run review -- --task "Retry HTTP 429 responses" --ci
 npm run verify -- --task "Retry HTTP 429 responses" --run-tests
+npm run dev -- config show
+npm run dev -- help
 ```
 
 CLI review is advisory by default. `--ci` exits non-zero for a non-clean verdict.
 
-## MCP workflow
+### npm scripts
 
-1. `plan_change` returns a soft file/symbol/test budget and reuse candidates.
-2. `analyze_change` returns the Red Ink Review.
-3. `minimize_change` returns at most one correction instruction.
-4. `verify_change` re-analyzes the final diff with actual test metadata when supplied.
+| Script | Description |
+| --- | --- |
+| `npm run dev -- <command>` | Runs the CLI directly from TypeScript without building `dist/`. |
+| `npm run build` | Compiles TypeScript into `dist/`. Required before the bundled MCP configuration can start the server. |
+| `npm test` | Runs the full Vitest suite. |
+| `npm run test:watch` | Runs Vitest in watch mode. |
+| `npm run mcp` | Starts the MCP server directly from TypeScript. |
+| `npm run review -- [options]` | Shorthand for `frankly review`. |
+| `npm run verify -- [options]` | Shorthand for `frankly verify`. |
+| `npm run demo` | Creates and analyzes the bundled retry-429 fixture in a temporary Git repository. |
+| `npm run benchmark` | Runs the local benchmark harness using `benchmarks/tasks.example.json`. |
+
+## MCP tool reference
+
+The MCP server exposes four tools. `task` is required for every tool. `repositoryRoot` is optional and defaults to the server's current working directory.
+
+| Tool | Use | Inputs | Output |
+| --- | --- | --- | --- |
+| `plan_change` | Before editing when scope is uncertain. | `task`, optional `repositoryRoot` | Expected scope, likely areas, reuse candidates, confidence, and concerns. |
+| `analyze_change` | Review the current diff. | `task`, optional `repositoryRoot`, `intensity`, `personality`, `executedTests` | Full Red Ink Review, findings, impact, contracts, predicted tests, and any correction guidance. |
+| `minimize_change` | Obtain the one permitted evidence-backed correction instruction after a review recommends it. | `task`, optional `repositoryRoot` | One correction instruction, or confirmation that no correction is warranted. |
+| `verify_change` | Verify the final diff after the correction pass and relevant tests. | `task`, optional `repositoryRoot`, `executedTests` | `CLEAN` confirmation or unresolved concerns. |
+
+For `analyze_change` and `verify_change`, `executedTests` is an optional list of `{ path, name, status, duration? }` objects. Valid statuses are `PASSED`, `FAILED`, `SKIPPED`, and `NOT_RUN`.
+
+The normal sequence is `plan_change` (when needed), `analyze_change`, one optional `minimize_change` correction, then `verify_change`.
 
 Predicted tests are `LIKELY_AFFECTED` or `POSSIBLY_AFFECTED`. Executed tests are only `PASSED`, `FAILED`, `SKIPPED`, or `NOT_RUN` when the caller supplies or the CLI records an actual run.
 
@@ -256,14 +338,13 @@ See [SECURITY.md](SECURITY.md).
 
 ## Architecture
 
-```text
-Git diff + task + TS/JS source
-              |
-       deterministic engine
-              |
-     evidence-backed review
-       /       |        \
- Claude     generic MCP   CLI/CI
+```mermaid
+graph LR
+    A[Git diff + task + TS/JS source] --> B[Deterministic engine]
+    B --> C[Evidence‑backed review]
+    C --> D1[Claude]
+    C --> D2[Generic MCP]
+    C --> D3[CLI/CI]
 ```
 
 One engine, thin adapters, no daemon, no database, no hidden model.
