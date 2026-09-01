@@ -1,4 +1,4 @@
-# <img src="file:///Users/AmrishMacBookPro/.gemini/antigravity-ide/brain/5dabddf1-502f-43d8-b12a-719035d77b27/frankly_banner_wide_1788237479013.jpg" alt="Frankly Banner" width="800"/>
+# <img src="assets/banner.jpg" alt="Frankly Banner" width="800"/>
 
 # Frankly
 
