@@ -1,10 +1,10 @@
 {
-  "name": "frankly",
-  "version": "0.1.0",
+  "name": "@amrishkhan05/frankly",
+  "version": "0.1.1",
   "description": "Change intelligence for AI coding agents. Every changed line should earn its place.",
   "type": "module",
   "bin": {
-    "frankly": "./dist/integrations/cli/index.js"
+    "frankly": "dist/integrations/cli/index.js"
   },
   "scripts": {
     "dev": "tsx src/integrations/cli/index.ts",
@@ -54,10 +54,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/amrishkhan05/frankly.git"
+    "url": "git+https://github.com/amrishkhan05/frankly.git"
   },
   "homepage": "https://github.com/amrishkhan05/frankly#readme",
-  "bugs": "https://github.com/amrishkhan05/frankly/issues",
+  "bugs": {
+    "url": "https://github.com/amrishkhan05/frankly/issues"
+  },
   "license": "MIT",
-  "author": "Amrish Khan <amrishkhan05@gmail.com>"
+  "author": "Amrish Khan <amrishkhan05@gmail.com>",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  }
 }

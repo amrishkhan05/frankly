@@ -31,4 +31,5 @@ benchmarks/results/
 benchmarks/*.json
 !benchmarks/*.example.json
 
+.npmrc
 AGENTS.md

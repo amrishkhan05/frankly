@@ -15,7 +15,7 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/amrishkhan05/frankly?style=for-the-badge)](https://github.com/amrishkhan05/frankly/stargazers)
 [![License](https://img.shields.io/github/license/amrishkhan05/frankly?style=for-the-badge)](LICENSE)
-[![npm version](https://img.shields.io/npm/v/frankly?style=for-the-badge)](https://www.npmjs.com/package/frankly)
+[![npm version](https://img.shields.io/npm/v/@amrishkhan05%2Ffrankly?style=for-the-badge)](https://www.npmjs.com/package/@amrishkhan05/frankly)
 
 </div>
 
