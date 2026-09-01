@@ -89,7 +89,33 @@ The repository has not claimed an npm release yet, so this README does not prete
 
 ## Claude Code plugin
 
-For a local checkout:
+Frankly's public GitHub repository is also its Claude Code marketplace. Install Frankly directly from GitHub:
+
+```bash
+claude plugin marketplace add amrishkhan05/frankly
+claude plugin install frankly@frankly
+```
+
+The marketplace catalog is [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json). It installs the plugin from this repository root (`"source": "./"`), which contains its manifest, MCP configuration, hooks, and skills. The plugin's explicit version is `0.1.0`; users receive future marketplace updates when that version changes.
+
+After an update, refresh the marketplace and plugin:
+
+```bash
+claude plugin marketplace update frankly
+claude plugin update frankly@frankly
+```
+
+For local development, validate and install the checkout as a marketplace:
+
+```bash
+claude plugin validate .
+claude plugin marketplace add ./
+claude plugin install frankly@frankly
+```
+
+Run `/reload-plugins` when Claude Code asks for activation after installation or an update. `claude plugin list` shows the installed plugin and version.
+
+For a one-session local checkout without marketplace installation:
 
 ```bash
 claude --plugin-dir /absolute/path/to/frankly

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "frankly",
+  "description": "Local-first change intelligence plugins for coding agents.",
+  "owner": {
+    "name": "Amrishkhan Sheik Abdullah",
+    "url": "https://github.com/amrishkhan05"
+  },
+  "plugins": [
+    {
+      "name": "frankly",
+      "source": "./",
+      "description": "Keeps AI-generated code changes proportional to the task.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Amrishkhan Sheik Abdullah",
+        "url": "https://github.com/amrishkhan05"
+      },
+      "homepage": "https://github.com/amrishkhan05/frankly",
+      "repository": "https://github.com/amrishkhan05/frankly",
+      "license": "MIT",
+      "keywords": ["change-intelligence", "code-review", "local-first", "mcp"],
+      "category": "productivity",
+      "tags": ["code-review", "local-first", "mcp"]
+    }
+  ]
+}
