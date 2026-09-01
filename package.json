@@ -1,6 +1,6 @@
 {
   "name": "@amrishkhan05/frankly",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Change intelligence for AI coding agents. Every changed line should earn its place.",
   "type": "module",
   "bin": {
