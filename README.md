@@ -55,14 +55,18 @@ npm run build
 
 **Commands Overview**
 
-| Command | Description |
-|---|---|
-| `git clone https://github.com/amrishkhan05/frankly.git` | Clone the repository |
-| `npm install` | Install dependencies |
-| `npm test` | Run the test suite |
-| `npm run build` | Build the project |
-| `npm install @amrishkhan05/frankly` | Install the package from npm |
-
+- [<img src="https://img.icons8.com/ios-filled/20/000000/rocket.png" alt="Rocket" style="vertical-align:middle;"/> Quick Start](#quick-start)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/search.png" alt="Search" style="vertical-align:middle;"/> The Ten‑Second Demo](#the-ten-second-demo)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/star.png" alt="Star" style="vertical-align:middle;"/> Features](#features)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/settings.png" alt="Gear" style="vertical-align:middle;"/> Installation & Usage](#installation--usage)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/puzzle.png" alt="Puzzle" style="vertical-align:middle;"/> Plugins & MCP Integration](#plugins--mcp-integration)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/tools.png" alt="Tools" style="vertical-align:middle;"/> CLI Reference](#cli-reference)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/wrench.png" alt="Wrench" style="vertical-align:middle;"/> Configuration](#configuration)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/combo-chart.png" alt="Chart" style="vertical-align:middle;"/> Benchmarks & Scoring](#benchmarks--scoring)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/lock.png" alt="Lock" style="vertical-align:middle;"/> Privacy & Security](#privacy--security)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/construction.png" alt="Construction" style="vertical-align:middle;"/> Roadmap](#roadmap)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/handshake.png" alt="Handshake" style="vertical-align:middle;"/> Contributing](#contributing)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/user.png" alt="User" style="vertical-align:middle;"/> Author](#author)
 ![Frankly demo](file:///Users/AmrishMacBookPro/.gemini/antigravity-ide/brain/5dabddf1-502f-43d8-b12a-719035d77b27/demo.gif)
 > **Note:** The package is now published on npm. Install with `npm install @amrishkhan05/frankly`.
 
