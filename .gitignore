@@ -30,3 +30,5 @@ Thumbs.db
 benchmarks/results/
 benchmarks/*.json
 !benchmarks/*.example.json
+
+AGENTS.md
