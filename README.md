@@ -56,6 +56,24 @@ Install the published package with `npm install @amrishkhan05/frankly`.
 
 ---
 
+## Publishing the package (GitHub npm registry)
+
+You can publish the **frankly** package to the GitHub Packages npm registry by adding a `publishConfig` entry in `package.json`:
+
+```json
+"publishConfig": {
+  "registry": "https://npm.pkg.github.com"
+}
+```
+
+Make sure the `repository` field matches your GitHub repository URL (e.g., `https://github.com/amrishkhan05/frankly.git`). Then run:
+
+```bash
+npm publish
+```
+
+For the public npm registry you can omit `publishConfig` or set `"registry": "https://registry.npmjs.org/"`.
+
 ## The ten-second demo
 
 ```text
