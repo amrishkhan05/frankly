@@ -21,18 +21,18 @@ Frankly is a **local‑first change‑intelligence engine** for coding agents. I
 
 ## <img src="https://img.icons8.com/ios-filled/24/000000/book.png" alt="Book" style="vertical-align:middle;"/> Table of Contents
 
-- [<img src="https://img.icons8.com/ios-filled/20/000000/rocket.png" alt="Rocket" style="vertical-align:middle;"/> Quick Start](#-quick-start)
-- [<img src="https://img.icons8.com/ios-filled/20/000000/search.png" alt="Search" style="vertical-align:middle;"/> The Ten‑Second Demo](#-the-ten-second-demo)
-- [<img src="https://img.icons8.com/ios-filled/20/000000/star.png" alt="Star" style="vertical-align:middle;"/> Features](#-features)
-- [<img src="https://img.icons8.com/ios-filled/20/000000/settings.png" alt="Gear" style="vertical-align:middle;"/> Installation & Usage](#-installation--usage)
-- [<img src="https://img.icons8.com/ios-filled/20/000000/puzzle.png" alt="Puzzle" style="vertical-align:middle;"/> Plugins & MCP Integration](#-plugins--mcp-integration)
-- [<img src="https://img.icons8.com/ios-filled/20/000000/tools.png" alt="Tools" style="vertical-align:middle;"/> CLI Reference](#-cli-reference)
-- [<img src="https://img.icons8.com/ios-filled/20/000000/wrench.png" alt="Wrench" style="vertical-align:middle;"/> Configuration](#-configuration)
-- [<img src="https://img.icons8.com/ios-filled/20/000000/combo-chart.png" alt="Chart" style="vertical-align:middle;"/> Benchmarks & Scoring](#-benchmarks--scoring)
-- [<img src="https://img.icons8.com/ios-filled/20/000000/lock.png" alt="Lock" style="vertical-align:middle;"/> Privacy & Security](#-privacy--security)
-- [<img src="https://img.icons8.com/ios-filled/20/000000/construction.png" alt="Construction" style="vertical-align:middle;"/> Roadmap](#-roadmap)
-- [<img src="https://img.icons8.com/ios-filled/20/000000/handshake.png" alt="Handshake" style="vertical-align:middle;"/> Contributing](#-contributing)
-- [<img src="https://img.icons8.com/ios-filled/20/000000/user.png" alt="User" style="vertical-align:middle;"/> Author](#-author)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/rocket.png" alt="Rocket" style="vertical-align:middle;"/> Quick Start](#quick-start)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/search.png" alt="Search" style="vertical-align:middle;"/> The Ten‑Second Demo](#the-ten-second-demo)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/star.png" alt="Star" style="vertical-align:middle;"/> Features](#features)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/settings.png" alt="Gear" style="vertical-align:middle;"/> Installation & Usage](#installation--usage)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/puzzle.png" alt="Puzzle" style="vertical-align:middle;"/> Plugins & MCP Integration](#plugins--mcp-integration)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/tools.png" alt="Tools" style="vertical-align:middle;"/> CLI Reference](#cli-reference)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/wrench.png" alt="Wrench" style="vertical-align:middle;"/> Configuration](#configuration)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/combo-chart.png" alt="Chart" style="vertical-align:middle;"/> Benchmarks & Scoring](#benchmarks--scoring)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/lock.png" alt="Lock" style="vertical-align:middle;"/> Privacy & Security](#privacy--security)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/construction.png" alt="Construction" style="vertical-align:middle;"/> Roadmap](#roadmap)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/handshake.png" alt="Handshake" style="vertical-align:middle;"/> Contributing](#contributing)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/user.png" alt="User" style="vertical-align:middle;"/> Author](#author)
 
 ---
 
@@ -266,6 +266,7 @@ The published `frankly` executable and the source checkout support the same subc
 |---|---|
 | From a source checkout | `npm run dev -- <command> [options]` |
 | After building (package executable) | `frankly <command> [options]` |
+## CLI Reference
 
 ### CLI command reference
 
