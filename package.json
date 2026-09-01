@@ -58,5 +58,6 @@
   },
   "homepage": "https://github.com/amrishkhan05/frankly#readme",
   "bugs": "https://github.com/amrishkhan05/frankly/issues",
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Amrish Khan <amrishkhan05@gmail.com>"
 }
