@@ -1,15 +1,7 @@
 # <img src="assets/banner.jpg" alt="Frankly Banner" width="800"/>
 
 # Frankly
-
-<details open>
-<summary><strong><img src="https://img.icons8.com/ios-filled/24/000000/rocket.png" alt="Rocket" style="vertical-align:middle;"/> Tagline</strong></summary>
-
-> **Your AI writes code. Frankly reviews it, frankly.**
-
-</details>
-
----
+#### Your AI writes code. Frankly reviews it, frankly.
 
 <div align="center">
 
