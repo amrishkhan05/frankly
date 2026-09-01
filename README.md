@@ -3,7 +3,7 @@
 # Frankly
 
 <details open>
-<summary><strong>🚀 Tagline</strong></summary>
+<summary><strong><img src="https://img.icons8.com/ios-filled/24/000000/rocket.png" alt="Rocket" style="vertical-align:middle;"/> Tagline</strong></summary>
 
 > **Your AI writes code. Frankly reviews it, frankly.**
 
@@ -21,30 +21,30 @@
 
 ---
 
-## 🎯 What is Frankly?
+## <img src="https://img.icons8.com/ios-filled/24/000000/target.png" alt="Target" style="vertical-align:middle;"/> What is Frankly?
 
 Frankly is a **local‑first change‑intelligence engine** for coding agents. It inspects the current Git diff and your TypeScript/JavaScript project, then asks whether **every changed file and symbol earned its place**. No hidden LLM calls, no cloud dependencies – everything runs deterministically on your machine.
 
 ---
 
-## 📖 Table of Contents
+## <img src="https://img.icons8.com/ios-filled/24/000000/book.png" alt="Book" style="vertical-align:middle;"/> Table of Contents
 
-- [🚀 Quick Start](#-quick-start)
-- [🔎 The Ten‑Second Demo](#-the-ten-second-demo)
-- [✨ Features](#-features)
-- [⚙️ Installation & Usage](#-installation--usage)
-- [🧩 Plugins & MCP Integration](#-plugins--mcp-integration)
-- [🛠️ CLI Reference](#-cli-reference)
-- [🔧 Configuration](#-configuration)
-- [📊 Benchmarks & Scoring](#-benchmarks--scoring)
-- [🔐 Privacy & Security](#-privacy--security)
-- [🚧 Roadmap](#-roadmap)
-- [🤝 Contributing](#-contributing)
-- [👤 Author](#-author)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/rocket.png" alt="Rocket" style="vertical-align:middle;"/> Quick Start](#-quick-start)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/search.png" alt="Search" style="vertical-align:middle;"/> The Ten‑Second Demo](#-the-ten-second-demo)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/star.png" alt="Star" style="vertical-align:middle;"/> Features](#-features)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/settings.png" alt="Gear" style="vertical-align:middle;"/> Installation & Usage](#-installation--usage)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/puzzle.png" alt="Puzzle" style="vertical-align:middle;"/> Plugins & MCP Integration](#-plugins--mcp-integration)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/tools.png" alt="Tools" style="vertical-align:middle;"/> CLI Reference](#-cli-reference)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/wrench.png" alt="Wrench" style="vertical-align:middle;"/> Configuration](#-configuration)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/combo-chart.png" alt="Chart" style="vertical-align:middle;"/> Benchmarks & Scoring](#-benchmarks--scoring)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/lock.png" alt="Lock" style="vertical-align:middle;"/> Privacy & Security](#-privacy--security)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/construction.png" alt="Construction" style="vertical-align:middle;"/> Roadmap](#-roadmap)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/handshake.png" alt="Handshake" style="vertical-align:middle;"/> Contributing](#-contributing)
+- [<img src="https://img.icons8.com/ios-filled/20/000000/user.png" alt="User" style="vertical-align:middle;"/> Author](#-author)
 
 ---
 
-## 🚀 Quick Start
+## <img src="https://img.icons8.com/ios-filled/24/000000/rocket.png" alt="Rocket" style="vertical-align:middle;"/> Quick Start
 
 ```bash
 # Clone the repo
@@ -60,12 +60,23 @@ npm test
 # Build the project
 npm run build
 ```
+
+**Commands Overview**
+
+| Command | Description |
+|---|---|
+| `git clone https://github.com/amrishkhan05/frankly.git` | Clone the repository |
+| `npm install` | Install dependencies |
+| `npm test` | Run the test suite |
+| `npm run build` | Build the project |
+| `npm install @amrishkhan05/frankly` | Install the package from npm |
+
 ![Frankly demo](file:///Users/AmrishMacBookPro/.gemini/antigravity-ide/brain/5dabddf1-502f-43d8-b12a-719035d77b27/demo.gif)
-> **Note:** The package is not yet published on npm. Until then, install directly from the source.
+> **Note:** The package is now published on npm. Install with `npm install @amrishkhan05/frankly`.
 
 ---
 
-## 🔎 The Ten‑Second Demo
+## <img src="https://img.icons8.com/ios-filled/24/000000/search.png" alt="Search" style="vertical-align:middle;"/> The Ten‑Second Demo
 
 ```text
 Task: Retry HTTP 429 responses
@@ -89,37 +100,45 @@ The repository has not claimed an npm release yet, so this README does not prete
 
 ## Claude Code plugin
 
-Frankly's public GitHub repository is also its Claude Code marketplace. Install Frankly directly from GitHub:
+Frankly's public GitHub repository is also its Claude Code marketplace. Use the following commands:
 
-```bash
-claude plugin marketplace add amrishkhan05/frankly
-claude plugin install frankly@frankly
-```
+| Command | Description |
+|---|---|
+| `claude plugin marketplace add amrishkhan05/frankly` | Add Frankly to the Claude marketplace |
+| `claude plugin install frankly@frankly` | Install the Frankly plugin |
+
 
 The marketplace catalog is [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json). It installs the plugin from this repository root (`"source": "./"`), which contains its manifest, MCP configuration, hooks, and skills. The plugin's explicit version is `0.1.0`; users receive future marketplace updates when that version changes.
 
 After an update, refresh the marketplace and plugin:
 
-```bash
-claude plugin marketplace update frankly
-claude plugin update frankly@frankly
-```
+| Command | Description |
+|---|---|
+| `claude plugin marketplace update frankly` | Update marketplace entry |
+| `claude plugin update frankly@frankly` | Update installed plugin |
+
 
 For local development, validate and install the checkout as a marketplace:
 
-```bash
-claude plugin validate .
-claude plugin marketplace add ./
-claude plugin install frankly@frankly
-```
+For local development, validate and install the checkout as a marketplace:
+
+| Command | Description |
+|---|---|
+| `claude plugin validate .` | Validate plugin locally |
+| `claude plugin marketplace add ./` | Add current directory to marketplace |
+| `claude plugin install frankly@frankly` | Install the plugin |
+
 
 Run `/reload-plugins` when Claude Code asks for activation after installation or an update. `claude plugin list` shows the installed plugin and version.
 
 For a one-session local checkout without marketplace installation:
 
-```bash
-claude --plugin-dir /absolute/path/to/frankly
-```
+For a one-session local checkout without marketplace installation:
+
+| Command | Description |
+|---|---|
+| `claude --plugin-dir /absolute/path/to/frankly` | Run Claude with the Frankly plugin directory |
+
 
 The plugin bundles Frankly's MCP server and a `Stop` hook. At task completion it runs a Red Ink Review; when correction is warranted it returns exactly one constrained correction request. The second stop is allowed, preventing loops. Claude Code's current plugin layout and hook behavior are documented in the [official plugin reference](https://code.claude.com/docs/en/plugins-reference) and [hooks reference](https://code.claude.com/docs/en/hooks).
 
@@ -247,13 +266,10 @@ See Kilo's [current MCP documentation](https://kilo.ai/docs/automate/mcp/using-i
 
 The published `frankly` executable and the source checkout support the same subcommands. Run commands from the repository you want to analyze. The CLI reads its working-tree diff and its `frankly.config.json`.
 
-```bash
-# From a source checkout
-npm run dev -- <command> [options]
-
-# After building, through the package executable
-frankly <command> [options]
-```
+| Use case | Command |
+|---|---|
+| From a source checkout | `npm run dev -- <command> [options]` |
+| After building (package executable) | `frankly <command> [options]` |
 
 ### CLI command reference
 
