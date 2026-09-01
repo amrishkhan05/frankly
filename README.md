@@ -1,4 +1,4 @@
-<img src="assets/banner.jpg" alt="Frankly banner" width="800" />
+<img src="https://raw.githubusercontent.com/amrishkhan05/frankly/main/assets/banner.jpg" alt="Frankly banner" width="800" />
 
 # Frankly
 
@@ -7,7 +7,7 @@
 <div align="center">
 
 [![GitHub stars](https://img.shields.io/github/stars/amrishkhan05/frankly?style=for-the-badge&logo=github)](https://github.com/amrishkhan05/frankly/stargazers)
-[![License](https://img.shields.io/github/license/amrishkhan05/frankly?style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/github/license/amrishkhan05/frankly?style=for-the-badge)](https://github.com/amrishkhan05/frankly/blob/main/LICENSE)
 [![npm version](https://img.shields.io/npm/v/@amrishkhan05%2Ffrankly?style=for-the-badge)](https://www.npmjs.com/package/@amrishkhan05/frankly)
 
 </div>
@@ -96,7 +96,7 @@ Frankly's public GitHub repository is also its Claude Code marketplace. Use the 
 | `claude plugin install frankly@frankly` | Install the Frankly plugin |
 
 
-The marketplace catalog is [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json). It installs the plugin from this repository root (`"source": "./"`), which contains its manifest, MCP configuration, hooks, and skills. The plugin's explicit version is `0.1.0`; users receive future marketplace updates when that version changes.
+The marketplace catalog is [`.claude-plugin/marketplace.json`](https://github.com/amrishkhan05/frankly/blob/main/.claude-plugin/marketplace.json). It installs the plugin from this repository root (`"source": "./"`), which contains its manifest, MCP configuration, hooks, and skills. The plugin's explicit version is `0.1.0`; users receive future marketplace updates when that version changes.
 
 After an update, refresh the marketplace and plugin:
 
